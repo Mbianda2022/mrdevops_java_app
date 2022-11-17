@@ -76,21 +76,22 @@ pipeline{
 
                         nexusArtifactUploader artifacts: 
                         [
-                            [artifactId: 'springboot', 
-                            classifier: '', 
-                            file: 'target/springboot-1.0.0.jar', 
-                            type: 'jar'
-                            ]
-                            
+                            [
+                                
+                               artifactId: 'springboot', 
+                               classifier: '', 
+                               file: 'target/springboot-1.0.0.jar', 
+                               type: 'jar'
+                             ]
+                          
                         ], 
-                            credentialsId: 'nexus-creds', 
-                            groupId: 'com.example', 
-                            nexusUrl: '44.201.105.157:8081', 
-                            nexusVersion: 'nexus3', 
-                            protocol: 'http', 
-                            repository: 'http://44.201.105.157:8081/repository/cloudlord-release/', 
-                            version: '1.0.0'
-
+                          credentialsId: 'nexus-credentials', 
+                          groupId: 'com.example', 
+                          nexusUrl: '44.201.105.157:8081', 
+                          nexusVersion: 'nexus3', 
+                          protocol: 'http', 
+                          repository: 'http://44.201.105.157:8081/repository/cloudlord-release/', 
+                          version: '1.0.0'
                     }
                 }
             }
