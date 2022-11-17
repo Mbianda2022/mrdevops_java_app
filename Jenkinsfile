@@ -10,7 +10,7 @@ pipeline{
                 
                 script{
                     
-                    git branch: 'main', url: 'https://github.com/Mbianda2022/mbianda_java_application.git'
+                    git branch: 'main', url: 'https://github.com/Mbianda2022/mbianda_java_application_2.git'
                 }
             }
         }
