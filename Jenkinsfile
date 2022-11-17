@@ -90,7 +90,7 @@ pipeline{
                           nexusUrl: '44.201.105.157:8081', 
                           nexusVersion: 'nexus3', 
                           protocol: 'http', 
-                          repository: 'http://44.201.105.157:8081/repository/cloudlord-release/', 
+                          repository: 'cloudlord-release', 
                           version: '1.0.0'
                     }
                 }
