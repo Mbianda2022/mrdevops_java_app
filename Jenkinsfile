@@ -94,7 +94,7 @@ pipeline{
                           nexusUrl: '44.201.105.157:8081', 
                           nexusVersion: 'nexus3', 
                           protocol: 'http', 
-                          repository: nexusRepo, 
+                          repository: cloudlord-release, 
                           version: "${readPomVersion.version}"
                     }
                 }
