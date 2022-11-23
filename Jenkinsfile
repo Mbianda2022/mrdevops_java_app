@@ -73,7 +73,34 @@ pipeline{
                 }
             }
         }
-        
-    }
+        stage('nexus artifact uploader'){
+
+            steps{
+
+                script{
+
+                    nexusArtifactUploader artifacts: 
+                    [
+                        
+                        [
+                            artifactId: 'springboot', 
+                            classifier: '', 
+                            file: 'target/springboot-2.0.0.jar', 
+                            type: 'jar'
+                            ]
+                    ], 
+                            credentialsId: 'nexus-creds', 
+                            groupId: 'com.example', 
+                            nexusUrl: ' 3.91.188.194:8081/', 
+                            nexusVersion: 'nexus3', 
+                            protocol: 'http', 
+                            repository: 'http://3.91.188.194:8081/repository/mbianda_apps-release/', 
+                            version: '2.0.0'
+                }
+            }
+        }
+
+
+        }
+     }
    
-}
