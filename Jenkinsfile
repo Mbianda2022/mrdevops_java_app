@@ -85,7 +85,7 @@ pipeline{
                         [
                             artifactId: 'springboot', 
                             classifier: '', 
-                            file: 'target/springboot-2.0.0.jar', 
+                            file: 'target/Uber.jar', 
                             type: 'jar'
                             ]
                     ], 
@@ -94,7 +94,7 @@ pipeline{
                             nexusUrl: ' 3.91.188.194:8081/', 
                             nexusVersion: 'nexus3', 
                             protocol: 'http', 
-                            repository: 'http://3.91.188.194:8081/repository/mbianda_apps-release/', 
+                            repository: 'mbianda_apps-release', 
                             version: '2.0.0'
                 }
             }
