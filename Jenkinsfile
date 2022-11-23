@@ -81,21 +81,21 @@ pipeline{
 
                     nexusArtifactUploader artifacts: 
                     [
-                        
                         [
                             artifactId: 'springboot', 
-                            classifier: '', 
-                            file: 'target/Uber.jar', 
+                            classifier: '',
+                            file: 'target/springboot-2.0.0.jar', 
                             type: 'jar'
-                            ]
-                    ], 
-                            credentialsId: 'nexus-creds', 
-                            groupId: 'com.example', 
-                            nexusUrl: ' 3.91.188.194:8081/', 
-                            nexusVersion: 'nexus3', 
-                            protocol: 'http', 
-                            repository: 'mbianda-release', 
-                            version: '2.0.0'
+                            
+                        ]
+                        
+                    ], credentialsId: 'nexus-creds', 
+                       groupId: 'com.example', 
+                       nexusUrl: '3.91.188.194:8081', 
+                       nexusVersion: 'nexus3', 
+                       protocol: 'http', 
+                       repository: 'mbianda-release', 
+                       version: '2.0.0'
                 }
             }
         }
