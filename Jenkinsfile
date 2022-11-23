@@ -1,6 +1,6 @@
 pipeline{
     
-    agent any 
+    agent any
     
     stages {
         
@@ -10,37 +10,41 @@ pipeline{
                 
                 script{
                     
-                    git branch: 'main', url: 'https://github.com/Mbianda2022/mbianda_java_application_2.git'
+                    git branch: 'main', url: 'https://github.com/Mbianda2022/mrdevops_java_app.git'
+                    
                 }
             }
         }
-        stage('UNIT testing'){
+        stage('Unit testing'){
             
             steps{
                 
                 script{
                     
                     sh 'mvn test'
+                    
                 }
             }
         }
-        stage('Integration testing'){
+        stage('Itegration testing'){
             
             steps{
                 
                 script{
                     
                     sh 'mvn verify -DskipUnitTests'
+                    
                 }
             }
         }
-        stage('Maven build'){
+        stage('Maven Build'){
             
             steps{
                 
                 script{
                     
                     sh 'mvn clean install'
+                    
                 }
             }
         }
@@ -50,55 +54,26 @@ pipeline{
                 
                 script{
                     
-                    withSonarQubeEnv(credentialsId: 'sonarqube-api') {
-                        
-                        sh 'mvn clean package sonar:sonar'
-                    }
+                  withSonarQubeEnv(credentialsId: 'sonarQube-api') {
+                      
+                      sh 'mvn clean package sonar:sonar'
+
                    }
                     
                 }
             }
-            stage('Quality Gate Status'){
+        }
+        stage('Quality Gate Status'){
+            
+            steps{
                 
-                steps{
+                script{
                     
-                    script{
-                        
-                        waitForQualityGate abortPipeline: false, credentialsId: 'sonarqube-api'
-                    }
-                }
-            }
-            stage('nexus artifact'){
-
-                steps{
-
-                    script{
-
-                        def readPomVersion = readMavenPom file: 'pom.xml'
-
-                        def nexusRepo = readPomVersion.version.endswith("SNAPSHOT") ? "cloudlord-snapshot" : "cloudlord-release"
-
-                        nexusArtifactUploader artifacts: 
-                        [
-                            [
-                                
-                               artifactId: 'springboot', 
-                               classifier: '', 
-                               file: 'target/Uber.jar', 
-                               type: 'jar'
-                             ]
-                          
-                        ], 
-                          credentialsId: 'nexus-credentials', 
-                          groupId: 'com.example', 
-                          nexusUrl: '44.201.105.157:8081', 
-                          nexusVersion: 'nexus3', 
-                          protocol: 'http', 
-                          repository: cloudlord-release, 
-                          version: "${readPomVersion.version}"
-                    }
+                    waitForQualityGate abortPipeline: false, credentialsId: 'sonarQube-api'
                 }
             }
         }
         
+    }
+   
 }
