@@ -80,7 +80,7 @@ pipeline{
                 script{
                     def readPomVersion = readMavenPom file: 'pom.xml'
 
-                    def nexusRepo = readPomVersion.version.endswith("SNAPSHHOT") ? "cloudlord-snapshot" : "cloudlord-releases"
+                    def nexusRepo = readPomVersion.version.endsWith("SNAPSHHOT") ? "cloudlord-snapshot" : "cloudlord-releases"
 
                     nexusArtifactUploader artifacts: 
                     [
