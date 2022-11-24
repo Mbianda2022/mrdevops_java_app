@@ -84,12 +84,12 @@ pipeline{
                         [
                             artifactId: 'springboot', 
                             classifier: '',
-                            file: 'target/springboot-2.0.0.jar', 
+                            file: 'target/Uber .jar', 
                             type: 'jar'
                             
                         ]
                         
-                    ], credentialsId: 'nexus-credentials', 
+                    ], credentialsId: 'nexus-crdntls', 
                        groupId: 'com.example', 
                        nexusUrl: '184.72.82.141:8081', 
                        nexusVersion: 'nexus3', 
