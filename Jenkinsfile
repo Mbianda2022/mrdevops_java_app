@@ -89,12 +89,12 @@ pipeline{
                             
                         ]
                         
-                    ], credentialsId: 'nexus-creds', 
+                    ], credentialsId: 'nexus-credentials', 
                        groupId: 'com.example', 
-                       nexusUrl: '3.91.188.194:8081', 
+                       nexusUrl: '184.72.82.141:8081', 
                        nexusVersion: 'nexus3', 
                        protocol: 'http', 
-                       repository: 'mbianda-release', 
+                       repository: 'cloudlord-releases', 
                        version: '2.0.0'
                 }
             }
