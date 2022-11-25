@@ -120,9 +120,9 @@ pipeline{
                 
                 script{
                     
-                   withCredentials([string(credentialsId: 'dockerhub_pwd', variable: 'dockerHub_psswd')]) {
+                   withCredentials([string(credentialsId: 'cloudLord_dockerHub_pwd', variable: 'cloudlord_dockerHub_pwd')]) {
      
-                        sh 'docker login -u kubembianda -p $(dockerHub_passwd)'
+                        sh 'docker login -u kubembianda -p ${cloudlord_dockerHub_pwd}'
                         sh 'docker image push kubembianda/$JOB_NAME:v1.$BUILD_ID'
                         sh 'docker image push kubembianda/$JOB_NAME:latest'
                    
