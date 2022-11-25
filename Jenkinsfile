@@ -78,27 +78,23 @@ pipeline{
             steps{
 
                 script{
-                    // def readPomVersion = readMavenPom file: 'pom.xml'
-
-                    // def nexusRepo = readPomVersion.version.endsWith("SNAPSHHOT") ? "cloudlord-snapshot" : "cloudlord-releases"
-
-                    nexusArtifactUploader artifacts: 
-                    [
-                        [
-                            artifactId: 'springboot', 
-                            classifier: '',
-                            file: 'target/Uber.jar', 
-                            type: 'jar'
-                            
-                        ]
-                        
-                    ], credentialsId: 'nexus-crdntls', 
-                       groupId: 'com.example', 
-                       nexusUrl: '44.201.155.173:8081', 
-                       nexusVersion: 'nexus3', 
-                       protocol: 'http', 
-                       repository: cloudlord-releases, 
-                       version: '1.0.0'
+                   
+               nexusArtifactUploader artifacts: 
+               [
+                  [
+                     artifactId: 'springboot', 
+                     classifier: '', 
+                     file: 'target/Uber.jar', 
+                     type: 'jar'
+                    ]
+                ], 
+                credentialsId: 'nexus-newcreds', 
+                groupId: 'com.example', 
+                nexusUrl: '44.201.155.173:8081', 
+                nexusVersion: 'nexus3', 
+                protocol: 'http', 
+                repository: 'cloudlord-releases', 
+                version: '1.0.0'
                 }
             }
         }
