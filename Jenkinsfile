@@ -80,7 +80,7 @@ pipeline{
                 script{
                     def readPomVersion = readMavenPom file: 'pom.xml'
 
-                    def nexusRepo = readPomVersion.version.endsWith("SNAPSHOT") ? "cloudlord-snapshot" : "cloudlord-releases"
+                    def nexusRepo = readPomVersion.version.endsWith("SNAPSHOT") ? "cloudlord-snapshot" :"cloudlord-releases"
                    
                nexusArtifactUploader artifacts: 
                [
@@ -96,7 +96,7 @@ pipeline{
                 nexusUrl: '44.201.155.173:8081', 
                 nexusVersion: 'nexus3', 
                 protocol: 'http', 
-                repository: 'nexusRepo', 
+                repository: nexusRepo, 
                 version: "${readPomVersion.version}"
                 }
             }
