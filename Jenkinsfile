@@ -114,6 +114,21 @@ pipeline{
                 }
             }
         }
+        stage('Push image to DockerHub'){
+            
+            steps{
+                
+                script{
+                    
+                    withCredentials([string(credentialsId: 'dockerHub_passwd', variable: 'dockerHub_password')]) { // some block
+                   
+                        sh 'docker login -u kubembianda -p $(dockerHub_passwd)'
+                        sh 'docker image push kubembianda/$JOB_NAME:v1.$BUILD_ID'
+                        sh 'docker image push kubembianda/$JOB_NAME:latest'
+                    } 
+                }
+            }
+        }
     
     }
     
