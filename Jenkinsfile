@@ -120,7 +120,7 @@ pipeline{
                 
                 script{
                     
-                    withCredentials([string(credentialsId: 'dockerHub_passwd', variable: 'dockerHub_password')]) { // some block
+                    withCredentials([string(credentialsId: 'dockerHub_passwd', variable: 'dockerHub_password')]) { 
                    
                         sh 'docker login -u kubembianda -p $(dockerHub_passwd)'
                         sh 'docker image push kubembianda/$JOB_NAME:v1.$BUILD_ID'
