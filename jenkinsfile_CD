@@ -29,11 +29,11 @@ pipeline{
                 }
             }
         }
-         stage('connect with cluster'){
+    stage('connect with cluster'){
 
-            steps{
+        steps{
 
-                script{
+            script{
 
                     sh """
                     aws configure set access_key_id "$ACCESS_KEY"
