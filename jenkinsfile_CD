@@ -29,9 +29,7 @@ pipeline{
                 }
             }
         }
-
-    }
-    stage('connect with cluster'){
+         stage('connect with cluster'){
 
             steps{
 
@@ -47,5 +45,7 @@ pipeline{
                 }
             }
         }
+
+    }
 
 }
