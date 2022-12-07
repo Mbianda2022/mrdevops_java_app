@@ -68,6 +68,30 @@ pipeline{
                }
             }
         }
+    }
+     stage('Delete on eks cluster'){
+        
+        when{ expression { params.action == 'delete'} }
+        steps{
+
+            script{
+
+               def delete = false
+
+               try{
+                input message: 'please confirm delete to delete the deployment',  ok: 'Ready to apply the config ?'
+                delete = true
+               }catch(err){
+                delete = false
+                currentBuild.result ='UNSTABLE'
+               }
+               if(delete){
+                sh """
+                    kubectl delete -f .
+                """
+               }
+            }
+        }
     }    
    
     }
